@@ -49,7 +49,7 @@ export default function SignUp() {
         {/* left */}
         <div className='flex-1'>
           <Link to='/' className='font-bold dark:text-white text-4xl'>
-            <span className='px-2 py-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg text-white'>
+            <span className='px-2 py-1 bg-gradient-to-r from-green-400 to-blue-400 rounded-lg text-white'>
               Leshi&apos;s
             </span>
             Blog
@@ -90,7 +90,7 @@ export default function SignUp() {
               />
             </div>
             <Button
-              gradientDuoTone='purpleToPink'
+              gradientDuoTone='greenToBlue'
               type='submit'
               disabled={loading}
             >
