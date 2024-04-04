@@ -12,7 +12,7 @@ export default function FooterCom() {
               to='/'
               className='self-center whitespace-nowrap text-sm sm:text-xl font-semibold dark:text-white'
             >
-              <span className='px-2 py-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg text-white'>
+              <span className='px-2 py-1 bg-gradient-to-r from-green-400 to-blue-400 rounded-lg text-white'>
                 Leshi&apos;s
               </span>
               Blog
