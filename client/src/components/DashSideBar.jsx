@@ -25,6 +25,7 @@ export default function DashSideBar() {
               icon={HiUser}
               label={'User'}
               labelColor='light'
+              as='div'
             >
               Profile
             </Sidebar.Item>
