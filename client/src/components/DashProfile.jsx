@@ -23,7 +23,7 @@ import {
 
 export default function DashProfile() {
   const { currentUser, error } = useSelector((state) => state.user);
-  const filePickerRef = useRef(null);
+  const filePickerRef = useRef();
   const [imageFile, setImageFile] = useState(null);
   const [imageFileUrl, setImageFileUrl] = useState(null);
   const [imageFileUploading, setImageFileUploading] = useState(false);
@@ -55,14 +55,14 @@ export default function DashProfile() {
     //       allow read;
     //       allow write: if
     //       request.resource.size < 2 * 1024 * 1024 &&
-    //       request.resource.contentType.matches('image/.*');
+    //       request.resource.contentType.matches('image/.*')
     //     }
     //   }
     // }
     setImageFileUploading(true);
     setImageFileUploadError(null);
     const storage = getStorage(app);
-    const fileName = new Date().getTime + imageFile.name;
+    const fileName = new Date().getTime() + imageFile.name;
     const storageRef = ref(storage, fileName);
     const uploadTask = uploadBytesResumable(storageRef, imageFile);
     uploadTask.on(
@@ -70,6 +70,7 @@ export default function DashProfile() {
       (snapshot) => {
         const progress =
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+
         setImageFileUploadProgress(progress.toFixed(0));
       },
       (error) => {
@@ -100,14 +101,13 @@ export default function DashProfile() {
     setUpdateUserError(null);
     setUpdateUserSuccess(null);
     if (Object.keys(formData).length === 0) {
-      setUpdateUserError('No changes made!');
+      setUpdateUserError('No changes made');
       return;
     }
     if (imageFileUploading) {
-      setUpdateUserError('Please wait for image to upload!');
+      setUpdateUserError('Please wait for image to upload');
       return;
     }
-
     try {
       dispatch(updateStart());
       const res = await fetch(`/api/user/update/${currentUser._id}`, {
@@ -117,14 +117,13 @@ export default function DashProfile() {
         },
         body: JSON.stringify(formData),
       });
-
       const data = await res.json();
       if (!res.ok) {
         dispatch(updateFailure(data.message));
         setUpdateUserError(data.message);
       } else {
         dispatch(updateSuccess(data));
-        setUpdateUserSuccess("User's profile updated successfully!");
+        setUpdateUserSuccess("User's profile updated successfully");
       }
     } catch (error) {
       dispatch(updateFailure(error.message));
@@ -143,7 +142,7 @@ export default function DashProfile() {
       if (!res.ok) {
         dispatch(deleteUserFailure(data.message));
       } else {
-        dispatch(deleteUserSuccess());
+        dispatch(deleteUserSuccess(data));
       }
     } catch (error) {
       dispatch(deleteUserFailure(error.message));
@@ -162,7 +161,7 @@ export default function DashProfile() {
         dispatch(signoutSuccess());
       }
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
     }
   };
 
@@ -204,11 +203,11 @@ export default function DashProfile() {
           )}
           <img
             src={imageFileUrl || currentUser.profilePicture}
-            alt=' user'
+            alt='user'
             className={`rounded-full w-full h-full object-cover border-8 border-[lightgray] ${
               imageFileUploadProgress &&
               imageFileUploadProgress < 100 &&
-              'opacity-50'
+              'opacity-60'
             }`}
           />
         </div>
@@ -217,15 +216,15 @@ export default function DashProfile() {
         )}
         <TextInput
           type='text'
-          id='usename'
+          id='username'
           placeholder='username'
           defaultValue={currentUser.username}
           onChange={handleChange}
         />
         <TextInput
           type='email'
-          id='eamil'
-          placeholder='eamil'
+          id='email'
+          placeholder='email'
           defaultValue={currentUser.email}
           onChange={handleChange}
         />
@@ -272,7 +271,7 @@ export default function DashProfile() {
         <Modal.Body>
           <div className='text-center'>
             <HiOutlineExclamationCircle className='h-14 w-14 text-gray-400 dark:text-gray-200 mb-4 mx-auto' />
-            <h3 className='mb-5 text-lg text-gray-500'>
+            <h3 className='mb-5 text-lg text-gray-500 dark:text-gray-400'>
               Are you sure you want to delete your account?
             </h3>
             <div className='flex justify-center gap-4'>
