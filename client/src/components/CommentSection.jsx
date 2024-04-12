@@ -91,7 +91,7 @@ export default function CommentSection({ postId }) {
         method: 'DELETE',
       });
       if (res.ok) {
-        const data = await res.json();
+        await res.json();
         setComments(comments.filter((comment) => comment._id !== commentId));
       }
     } catch (error) {
