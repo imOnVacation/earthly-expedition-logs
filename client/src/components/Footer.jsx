@@ -17,7 +17,7 @@ export default function FooterCom() {
               </span>
             </Link>
           </div>
-          <div className='grid grid-cols-2 gap-8 mt-4 sm:grid-cols-3 sm:gap-6'>
+          <div className='grid grid-cols-2 gap-8 mt-4 sm:grid-cols-2 sm:gap-6'>
             <div>
               <Footer.Title title='About' />
               <Footer.LinkGroup col>
