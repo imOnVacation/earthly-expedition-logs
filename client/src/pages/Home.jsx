@@ -19,7 +19,9 @@ export default function Home() {
       <div className='flex flex-col gap-6 p-28 px-3 max-w-6xl mx-auto '>
         <h1 className='text-3xl font-bold lg:text-6xl'>Welcome to my Blog</h1>
         <p className='text-gray-500 text-xs sm:text-sm'>
-          Here is a placeholder, I will add some content here later.
+          I consider myself a traveler on this planet, and this is where I
+          record every little experience I have had here. Feel free to browse
+          around and leave comments.
         </p>
         <Link
           to='/search'
