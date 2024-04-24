@@ -13,9 +13,8 @@ export default function FooterCom() {
               className='self-center whitespace-nowrap text-sm sm:text-xl font-semibold dark:text-white'
             >
               <span className='px-2 py-1 bg-gradient-to-r from-green-400 to-blue-400 rounded-lg text-white'>
-                Leshi&apos;s
+                Earthly Expedition Logs
               </span>
-              Blog
             </Link>
           </div>
           <div className='grid grid-cols-2 gap-8 mt-4 sm:grid-cols-3 sm:gap-6'>
@@ -27,7 +26,7 @@ export default function FooterCom() {
                   target='_blank'
                   rel='noopener noreferrer'
                 >
-                  Leshi&apos;s Blog
+                  Earthly Expedition Logs
                 </Footer.Link>
               </Footer.LinkGroup>
             </div>
@@ -43,14 +42,22 @@ export default function FooterCom() {
         <Footer.Divider />
         <div className='w-full sm:flex sm:items-center sm:justify-between'>
           <Footer.Copyright
-            href='#'
-            by="Leshi's Blog"
+            by='Earthly Expedition Logs'
             year={new Date().getFullYear()}
           />
           <div className='flex gap-6 sm:mt-0 mt-4 sm:justify-center'>
-            <Footer.Icon href='#' icon={BsLinkedin} />
-            <Footer.Icon href='#' icon={BsGithub} />
-            <Footer.Icon href='#' icon={BsInstagram} />
+            <Footer.Icon
+              href='https://www.linkedin.com/in/leshichen/'
+              icon={BsLinkedin}
+            />
+            <Footer.Icon
+              href='https://github.com/imOnVacation'
+              icon={BsGithub}
+            />
+            <Footer.Icon
+              href='https://www.instagram.com/leshichenn/'
+              icon={BsInstagram}
+            />
           </div>
         </div>
       </div>
