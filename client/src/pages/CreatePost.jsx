@@ -143,11 +143,7 @@ export default function CreatePost() {
           </Alert>
         )}
         {formData.image && (
-          <img
-            src={formData.image}
-            alt='preview'
-            className='w-full h-72 object-cover'
-          />
+          <img src={formData.image} alt='preview' className='object-cover' />
         )}
         <ReactQuill
           theme='snow'
